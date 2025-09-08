@@ -5,8 +5,10 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 
+	"most-active-github-users-counter/api"
 	"most-active-github-users-counter/output"
 	"most-active-github-users-counter/top"
 )
@@ -35,9 +37,27 @@ func main() {
 	fileName := flag.String("file", "", "Output file (optional, defaults to stdout)")
 	presetName := flag.String("preset", "", "Preset (optional)")
 	listPresets := flag.Bool("list-presets", false, "List all available presets as CSV and exit immediately")
+	serverMode := flag.Bool("server", false, "Run as HTTP server")
+	port := flag.String("port", "8080", "Server port")
 
 	flag.Var(&locations, "location", "Location to query")
 	flag.Parse()
+
+	// Server mode
+	if *serverMode {
+		http.HandleFunc("/api/github-users", api.GitHubUsersHandler)
+		http.HandleFunc("/api/presets", api.PresetsHandler)
+		
+		log.Printf("Starting server on port %s", *port)
+		log.Printf("API endpoints:")
+		log.Printf("  GET /api/github-users?token=<token>&preset=<preset>&amount=<amount>")
+		log.Printf("  GET /api/presets")
+		
+		if err := http.ListenAndServe(":"+*port, nil); err != nil {
+			log.Fatal("Server failed to start:", err)
+		}
+		return
+	}
 
 	if *listPresets {
 		fmt.Println("preset,title,definition_checksum")

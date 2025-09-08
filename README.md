@@ -18,6 +18,30 @@ go run *.go \
    --file ./output.csv
 ```
 
+**API Server Mode:**
+
+```bash
+# Start the API server
+go run *.go --server --port 8080
+
+# API Endpoints:
+# GET /api/github-users?token=<token>&preset=<preset>&amount=<amount>&consider=<consider>
+# GET /api/presets
+```
+
+**Frontend Development:**
+
+```bash
+# Start the Go API server (in one terminal)
+go run *.go --server --port 8080
+
+# Start the Next.js frontend (in another terminal)
+cd frontend
+npm run dev
+```
+
+The frontend will be available at `http://localhost:3000` and will connect to the Go API at `http://localhost:8080`.
+
 ## Contribution
 
 Contributions are accepted. Please report issues or make pull requests against either `master` or [branch for the website](https://github.com/ashkulz/committers.top/tree/gh-pages) as appropriate.

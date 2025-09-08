@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-dark-800;
+  }
+  
+  body {
+    @apply bg-dark-900 text-dark-50 font-brutal;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .btn-brutal {
+    @apply px-6 py-3 font-bold text-dark-900 bg-primary-400 border-3 border-dark-800 shadow-brutal hover:shadow-brutal-lg hover:translate-x-1 hover:translate-y-1 transition-all duration-200 uppercase tracking-wide;
+  }
+  
+  .btn-brutal-secondary {
+    @apply px-6 py-3 font-bold text-dark-50 bg-secondary-600 border-3 border-dark-800 shadow-brutal hover:shadow-brutal-lg hover:translate-x-1 hover:translate-y-1 transition-all duration-200 uppercase tracking-wide;
+  }
+  
+  .btn-brutal-accent {
+    @apply px-6 py-3 font-bold text-dark-900 bg-accent-400 border-3 border-dark-800 shadow-brutal hover:shadow-brutal-lg hover:translate-x-1 hover:translate-y-1 transition-all duration-200 uppercase tracking-wide;
+  }
+  
+  .card-brutal {
+    @apply bg-dark-800 border-4 border-dark-700 shadow-brutal-lg p-6;
+  }
+  
+  .card-brutal-primary {
+    @apply bg-primary-600 border-4 border-dark-800 shadow-brutal-primary p-6;
+  }
+  
+  .input-brutal {
+    @apply px-4 py-3 bg-dark-800 border-3 border-dark-700 text-dark-50 placeholder-dark-400 focus:border-primary-400 focus:shadow-brutal-primary focus:outline-none transition-all duration-200;
+  }
+  
+  .select-brutal {
+    @apply px-4 py-3 bg-dark-800 border-3 border-dark-700 text-dark-50 focus:border-primary-400 focus:shadow-brutal-primary focus:outline-none transition-all duration-200 appearance-none;
+  }
+}
